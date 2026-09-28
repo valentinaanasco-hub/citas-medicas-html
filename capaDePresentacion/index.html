@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamiento de citas médicas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <!-- Scripts de Bootstrap (necesarios para el carrusel) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!--<script src="validacion.js"></script>-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+<body>
+  <div id="notificaciones" class="notificaciones-contenedor"></div>
+
+  <header class="header-academico">
+    <div class="container-fluid">
+      <h1>Sistema de Agendamiento de Citas Médicas</h1>
+      <p>Universidad del Cauca</p>
+
+         <div class="social-icons">
+            <a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="" title="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+    </div>
+  </header>
+
+
+  
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container-fluid">      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion1">Sección 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion2">Sección 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion3">Sección 3</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+    <div class="container-fluid mt-5" id="seccion1">
+        <h1 class="text-center mb-4">Nuestras Promociones</h1>
+               <!-- Carrusel -->
+        <div id="carouselProductos" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./imagenes/promocion1.png" class="d-block w-100" alt="Promo 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/promocion2.png" class="d-block w-100" alt="Promo 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/promocion3.png" class="d-block w-100" alt="Promo 3">
+                </div>
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>    
+  </div>
+
+  <div class="container-fluid mt-5" id="seccion2">
+    <h1 class="text-center mb-4">Nuestros Médicos y Especialidades</h1>
+        <div class="row">
+
+           <!-- Barra lateral: 12/12 en <576px, 2/12 en ≥576px, 4/12 en ≥768px -->
+    <aside class="col-12 col-sm-2 col-md-4">
+      <h2>Especialidades</h2>
+      <ul class="list-group" id="listaEspecialidades">
+        <li class="list-group-item"><a href="#" data-especialidad="terapia-neural">Terapia Neural</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="quiropraxia">Quiropraxia</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="fisioterapia">Fisioterapia</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="nutricion">Nutrición y Dietética Terapéutica</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="cardiologia">Cardiología</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="pediatria">Pediatría</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="dermatologia">Dermatología</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="neurologia">Neurología</a></li>
+        <li class="list-group-item"><a href="#" data-especialidad="ortopedia">Ortopedia</a></li>
+      </ul>
+        <!-- Descripción de la especialidad seleccionada: va aquí, debajo de la lista -->
+        <p id="descripcionEspecialidad" class="mt-3 text-muted"></p>
+    </aside>
+
+  <!-- Médicos: 12/12 en <576px, 10/12 en ≥576px (complemento del 2), 8/12 en ≥768px -->
+
+
+  <main class="col-12 col-sm-10 col-md-8">
+    <h2>Nuestros Médicos</h2>
+    <div class="row g-3" id="contenedorMedicos">
+
+      <!-- 2 por fila en sm, 3 en md, 4 en lg -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha1">
+          <img src="./imagenes/doctor1.webp" class="card-img-top img-fluid border img-medico" alt="Dr. Miranda Bailey">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Miranda Bailey</h5>
+            <p class="card-text">8 años de experiencia - Cardiología</p>
+            <p class="card-text">Enfocada en el diagnostico y cuidado preventivo del corazón.</p>
+            <p class="card-text"><strong>Horario:</strong> Lunes a viernes, 8am - 4pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha2">
+          <img src="./imagenes/doctor2.jpg" class="card-img-top img-fluid border img-medico" alt="Dr. James Wilson">
+          <div class="card-body">
+            <h5 class="card-title">Dr. James Wilson</h5>
+            <p class="card-text">12 años de experiencia - Pediatría</p>
+            <p class="card-text">Especialista en el desarrollo y bienestar de niños y adolescentes.</p>
+            <p class="card-text"><strong>Horario:</strong> Lunes a sábado, 9am - 5pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha3">
+          <img src="./imagenes/doctor3.webp" class="card-img-top img-fluid border img-medico" alt="Dr. Meredith Grey ">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Meredith Grey </h5>
+            <p class="card-text">10 años de experiencia - Dermatología</p>
+            <p class="card-text">Especialista en el tratamiento,diagnostico y cuidado de la piel y tratamientos estéticos.</p>
+            <p class="card-text"><strong>Horario:</strong> Martes a viernes, 10am - 6pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha4">
+          <img src="./imagenes/doctor4.webp" class="card-img-top img-fluid border img-medico" alt="Dr. Cristina Yang ">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Cristina Yang </h5>
+            <p class="card-text">8 años de experiencia - Dermatología</p>
+            <p class="card-text">Especialista en el diagnóstico y tratamiento de afecciones cutáneas, abarcando también pelo, uñas y mucosas.</p>
+            <p class="card-text"><strong>Horario:</strong> Martes a sábado, 10am - 6pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha5">
+          <img src="./imagenes/doctor5.jpg" class="card-img-top img-fluid border img-medico" alt="Dr. Gregory House">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Gregory House</h5>
+            <p class="card-text">15 años de experiencia - Neurología</p>
+            <p class="card-text">Especialista en el diagnóstico y tratamiento de trastornos del sistema nervioso.</p>
+            <p class="card-text"><strong>Horario:</strong> Lunes a viernes, 9am - 5pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 d-flex flex-column" id="ficha6">
+          <img src="./imagenes/doctor6.jpg" class="card-img-top img-fluid border img-medico" alt="Dr. Shaun Murphy">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Shaun Murphy</h5>
+            <p class="card-text">20 años de experiencia - Ortopedia</p>
+            <p class="card-text">Especialista en el diagnóstico y tratamiento de trastornos musculoesqueléticos.</p>
+            <p class="card-text"><strong>Horario:</strong> Lunes a viernes, 8am - 4pm</p>
+            <button class="btn btn-primary">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+    </div> 
+  </div>
+
+
+  <div class="container-fluid mt-5" id="seccion3">
+  <h1 class="text-center mb-2">Registro de Nuevos Usuarios</h1>
+  <p class="lead text-center mb-4">Diligencie el siguiente formulario para registrarse como paciente de la clínica.</p>
+
+  <form id="formPaciente">
+    <div class="mb-3">
+      <label for="nombresPaciente" class="form-label">Nombres</label>
+      <input type="text" id="nombresPaciente" class="form-control" placeholder="Nombres" required>
+      <label class="text-danger form-text" id="errorNombresPaciente"></label>
+    </div>
+
+    <div class="mb-3">
+      <label for="apellidosPaciente" class="form-label">Apellidos</label>
+      <input type="text" id="apellidosPaciente" class="form-control" placeholder="Apellidos" required>
+      <label class="text-danger form-text" id="errorApellidosPaciente"></label>
+    </div>
+
+    <div class="mb-3">
+      <label for="tipoIdentificacion" class="form-label">Tipo de Identificación</label>
+      <select id="tipoIdentificacion" class="form-select">
+        <option value="" disabled selected>Seleccione un tipo de identificación</option>
+        <option value="cc">Cédula de Ciudadanía</option>
+        <option value="ti">Tarjeta de Identidad</option>
+        <option value="ce">Cédula de Extranjería</option>
+        <option value="pas">Pasaporte</option>
+      </select>
+      <label class="text-danger form-text" id="errorTipoIdentificacion"></label>
+    </div>
+
+    <div class="mb-3">
+      <label for="numeroIdentificacion" class="form-label">Número de Identificación</label>
+      <input type="text" id="numeroIdentificacion" class="form-control" placeholder="Número de identificación" required>
+      <label class="text-danger form-text" id="errorNumeroIdentificacion"></label>
+      <div class="form-text">Este número será tu dato de confirmación para agendar citas.</div>
+    </div>
+
+    <fieldset class="mb-3">
+      <legend class="form-label">Género:</legend>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="femenino" name="genero" value="femenino">
+        <label class="form-check-label" for="femenino">Femenino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="masculino" name="genero" value="masculino">
+        <label class="form-check-label" for="masculino">Masculino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="otro" name="genero" value="otro">
+        <label class="form-check-label" for="otro">Otro</label>
+      </div>
+      <label class="text-danger form-text" id="errorGenero"></label>
+    </fieldset>
+
+    <div class="d-flex justify-content-start">
+      <button type="submit" id="btnAgregarPaciente" class="btn btn-primary" disabled>Registrar</button>
+    </div>
+  </form>
+</div>
+
+  <footer class="footer-academico">
+    <div class="container-fluid my-5">
+      <p>Ingeniería del Software III — Ejemplo de arquitectura en capas</p>
+      <p>&copy; 2026 Universidad del Cauca. Todos los derechos reservados.</p>
+      
+     <div class="social-icons-footer">
+        <a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Archivos JS -->
+  <!-- 1. Entidades -->
+  <script src="../capaDeAccesoADatos/entitys/Paciente.js"></script>
+
+  <!-- 2. Repositorios -->
+  <script src="../capaDeAccesoADatos/repositorios/PacienteRepository.js"></script>
+
+  <!-- 3. Fachadas -->
+  <script src="../fachadaServices/gestionarPacientesServices.js"></script>
+
+  <!-- 4. Vista -->
+  <script src="notificaciones.js"></script>
+  <script src="validaciones.js"></script>
+  <script src="logicaPaciente.js"></script>
+  <script src="logicaEspecialidad.js"></script>
+
+
+</body>
+</html>
